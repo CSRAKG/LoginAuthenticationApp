@@ -13,6 +13,7 @@ import {LoginPageModule} from "../pages/login/login.module";
 import {RegisterPageModule} from "../pages/register/register.module";
 import {AngularFireModule} from "angularfire2";
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import {LoggedInPageModule} from "../pages/logged-in/logged-in.module";
 
 const firebaseAuth=
 {
@@ -41,7 +42,8 @@ const firebaseAuth=
     HomePageModule,
     FirstPageModule,
     LoginPageModule,
-    RegisterPageModule
+    RegisterPageModule,
+    LoggedInPageModule
 
 
 
