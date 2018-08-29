@@ -14,11 +14,13 @@ import {RegisterPageModule} from "../pages/register/register.module";
 import {AngularFireModule} from "angularfire2";
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {LoggedInPageModule} from "../pages/logged-in/logged-in.module";
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+ import {AngularFirestore} from "angularfire2/firestore";
 
 const firebaseAuth=
 {
   apiKey: "AIzaSyD8xfgjTJaJz3jgl6KfBqEvx_eBDCg5wOY",
-    authDomain: "test-project-cc356.firebaseapp.com",
+  authDomain: "test-project-cc356.firebaseapp.com",
   databaseURL: "https://test-project-cc356.firebaseio.com",
   projectId: "test-project-cc356",
   storageBucket: "test-project-cc356.appspot.com",
@@ -38,6 +40,7 @@ const firebaseAuth=
     AngularFireModule.initializeApp(firebaseAuth),
     AngularFireAuthModule,
     AboutPageModule,
+    AngularFireDatabaseModule,
     ContactPageModule,
     HomePageModule,
     FirstPageModule,
@@ -57,7 +60,9 @@ const firebaseAuth=
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFirestore
+
   ]
 })
 export class AppModule {}

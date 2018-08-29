@@ -1,5 +1,5 @@
 export interface Item {
-  name?: string;
+  email?: string;
   address?: string;
   mobile?: number;
 }
