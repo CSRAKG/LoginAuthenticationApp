@@ -6,14 +6,14 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card >
+  <ion-card *ngFor="let item of itemlist | async" >
     <ion-card-header>
       {{ item.username }}
     </ion-card-header>
     <ion-card-content>
-      Artist Name: {{ item.name }}
+      Artist Name: {{ item.username}}
       id: {{item.id}}
-      name: {{item.mobile}}
+      name: {{item.name}}
       address: {{item.address}}
     </ion-card-content>
   </ion-card>

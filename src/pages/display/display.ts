@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {FirebaseProvider} from "../../providers/firebase/firebase";
-import Firestore = firebase.firestore.Firestore;
 
 /**
  * Generated class for the DisplayPage page.
@@ -16,20 +15,15 @@ import Firestore = firebase.firestore.Firestore;
   templateUrl: 'display.html',
 })
 export class DisplayPage implements OnInit{
-  public item;
-  public id;
+  public itemlist;
 
 
   ngOnInit(): void {
-    this.id= this.firestore.;
-    this.item=this.firestoreservice.getItemDetail('id');
+    this.itemlist=this.firestoreservice.getItemList().valueChanges();
 
   }
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private  firestoreservice: FirebaseProvider,
-              private firestore: Firestore) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private  firestoreservice: FirebaseProvider) {
 
   }
 
