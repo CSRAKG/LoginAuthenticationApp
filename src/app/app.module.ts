@@ -15,7 +15,9 @@ import {AngularFireModule} from "angularfire2";
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {LoggedInPageModule} from "../pages/logged-in/logged-in.module";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
- import {AngularFirestore} from "angularfire2/firestore";
+ import { FirebaseProvider } from '../providers/firebase/firebase';
+import {DisplayPageModule} from "../pages/display/display.module";
+import {AngularFirestore} from "angularfire2/firestore";
 
 const firebaseAuth=
 {
@@ -46,7 +48,8 @@ const firebaseAuth=
     FirstPageModule,
     LoginPageModule,
     RegisterPageModule,
-    LoggedInPageModule
+    LoggedInPageModule,
+    DisplayPageModule
 
 
 
@@ -61,6 +64,7 @@ const firebaseAuth=
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider,
     AngularFirestore
 
   ]
