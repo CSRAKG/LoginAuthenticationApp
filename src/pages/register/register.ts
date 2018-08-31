@@ -74,7 +74,7 @@ this.createUserForm=this.formbulider.group({
     const address = this.createUserForm.value.address;
     const mobile =this.createUserForm.value.mobile;
 
-    this.firestoreService
+   this.firestoreService
       .createItem(username, password, address, name,mobile)
       .then(
         () => {
@@ -86,8 +86,8 @@ this.navCtrl.push(DisplayPage)
         error => {
           console.error(error);
         }
-      );
-
+      )
+    ;
     return await loading.present();
   }
 }

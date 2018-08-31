@@ -1,20 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Item List</ion-title>
+    <ion-title> your registration details</ion-title>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let item of itemlist | async" >
+  <ion-card>
     <ion-card-header>
-      {{ item.username }}
-    </ion-card-header>
+     </ion-card-header>
     <ion-card-content>
-      Artist Name: {{ item.username}}
-      id: {{item.id}}
-      name: {{item.name}}
-      address: {{item.address}}
+       Name: {{ (item | async)?.username}}
+      <br>
+      id: {{(item | async)?.userid}}
+      <br>
+      name: {{(item | async)?.name}}
+      <br>
+      address: {{(item| async)?.address}}
+      <br>
+      password: {{(item | async)?.password}}
+
     </ion-card-content>
   </ion-card>
 </ion-content>

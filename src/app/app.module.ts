@@ -18,6 +18,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
  import { FirebaseProvider } from '../providers/firebase/firebase';
 import {DisplayPageModule} from "../pages/display/display.module";
 import {AngularFirestore} from "angularfire2/firestore";
+import { EventBusProvider } from '../providers/event-bus/event-bus';
 
 const firebaseAuth=
 {
@@ -65,7 +66,8 @@ const firebaseAuth=
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    AngularFirestore
+    AngularFirestore,
+    EventBusProvider
 
   ]
 })

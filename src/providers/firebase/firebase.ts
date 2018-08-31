@@ -5,11 +5,13 @@ import {
   AngularFirestoreDocument,
 } from 'angularfire2/firestore';
 import {ItemInterface} from "../../pages/model/item.interface";
+import {EventBusProvider} from "../event-bus/event-bus";
 
 @Injectable()
 export class FirebaseProvider {
-  constructor(public firestore: AngularFirestore) {
+  constructor(public firestore: AngularFirestore,private busEvent:EventBusProvider) {
   }
+    public id: string = this.firestore.createId();
 
   createItem(
     username: string,
@@ -18,10 +20,10 @@ export class FirebaseProvider {
     name: string,
     mobile: number
   ): Promise<void> {
-    const id = this.firestore.createId();
-
-    return this.firestore.doc(`items/${id}`).set({
-      id,
+    const userid =this.id;
+ this.busEvent.announce('current',userid);
+    return this.firestore.doc(`items/${userid}`).set({
+      userid,
       username,
       password,
       address,
@@ -29,6 +31,8 @@ export class FirebaseProvider {
       mobile
     });
   }
+  getId()
+  {return this.id}
 
   getItemList(): AngularFirestoreCollection<ItemInterface> {
     return this.firestore.collection(`items`);
