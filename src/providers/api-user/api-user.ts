@@ -13,23 +13,27 @@ import {map, tap} from "rxjs/operators";
 export class ApiUserProvider {
   public user: LoginResponse;
 
+  response = '';
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiUserProvider Provider');
   }
-  login(username: string, password: string): Observable<LoginResponse>{
+  login(username: string, password: string){
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    const data = new FormData() ;
-    data.append("username", username);
-    data.append("password", password);
-    console.log(this.user.college);
+    const data1 = new FormData() ;
+    data1.append('username', 'krs@gmail.com');
+    data1.append('password', 'karan123');
 
-    return   this.http.post<LoginResponse>('https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php',
-      data, {headers: headers}).pipe(tap(data => this.user.college= data.college) );
-
+    this.http.post('https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php', data1)
+      .subscribe(data => {
+        this.response = data['_body'];
+        console.log(this.response);
+      }, error => {
+        console.log(error);
+      });
 
   }
 
