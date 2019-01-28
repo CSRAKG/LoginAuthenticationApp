@@ -1,16 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {AngularFireAuth} from "angularfire2/auth";
-import {AlertController} from "ionic-angular";
-import {LoggedInPage} from "../logged-in/logged-in";
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+ import {AlertController} from "ionic-angular";
+ import {ApiUserProvider} from "../../providers/api-user/api-user";
 
 
 @IonicPage()
@@ -21,7 +12,9 @@ import {LoggedInPage} from "../logged-in/logged-in";
 export class LoginPage {
   @ViewChild('username') user;
   @ViewChild('password') pass;
-  constructor(private alertCtrl: AlertController,private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
+              private api : ApiUserProvider
+              ) {
 
   }
 
@@ -35,17 +28,9 @@ this.alertCtrl.create({
 }
 
   signInUser() {
-    this.fire.auth.signInWithEmailAndPassword(this.user.value,this.pass.value)
-      .then((data)=>{
-        console.log('you sign in',this.fire.auth.currentUser);
-        this.alert('success');
-        this.navCtrl.setRoot(LoggedInPage);
-
-      })
-      .catch((error)=>{
-        console.log('error is', error.message);
-        this.alert('error');
-      })
+    console.log(this.user.value);
+    console.log(this.pass.value);
+this.api.login(this.user.value,this.pass.value);
   }
 
   ionViewDidLoad() {

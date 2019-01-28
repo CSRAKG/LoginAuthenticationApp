@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {LoginPage} from "../login/login";
-import {RegisterPage} from "../register/register";
 
 /**
  * Generated class for the HomePage page.
@@ -21,8 +20,6 @@ export class HomePage {
   }
   signIn()
   {this.navCtrl.push(LoginPage)}
-  registerThis()
-  {this.navCtrl.push(RegisterPage)}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
