@@ -12,29 +12,30 @@ import {map, tap} from "rxjs/operators";
 @Injectable()
 export class ApiUserProvider {
   public user: LoginResponse;
-
+url ='https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php';
   response = '';
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiUserProvider Provider');
   }
   login(username: string, password: string){
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
 
     const data1 = new FormData() ;
     data1.append('username', 'krs@gmail.com');
     data1.append('password', 'karan123');
 
-    this.http.post('https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php', data1)
-      .subscribe(data => {
-        this.response = data['_body'];
-        console.log(this.response);
-      }, error => {
-        console.log(error);
-      });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
 
+        'Content-Type': 'application/json'
+      })
+    };
+    const body = JSON.stringify(data1);
+    const data = this.http.post(this.url, body);
+    data.subscribe(d => {
+      console.log(d);
+    });
   }
 
 

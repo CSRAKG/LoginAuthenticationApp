@@ -1,8 +1,18 @@
-import {Component, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
- import {AlertController} from "ionic-angular";
- import {ApiUserProvider} from "../../providers/api-user/api-user";
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { Http } from '@angular/http';
 
+  import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
+import {HomePage} from "../home/home";
+
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -10,31 +20,67 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  @ViewChild('username') user;
-  @ViewChild('password') pass;
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
-              private api : ApiUserProvider
-              ) {
+  //requiring the form elements
+  @ViewChild('username') username;
+  @ViewChild('password') password;
+  todo = {};
+   response: string;
+  str: object;
+  user:FormGroup;
+
+  constructor( private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams,
+               public toastCtrl: ToastController,private http: Http) {
+   }
+
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Error',
+      subTitle: "Wrong Username or Password entered",
+      buttons: ['OK']
+    }).present();
+  }
+
+
+
+
+
+
+
+  ngOnInit() {
+
+    this.user = new FormGroup({
+      name: new FormControl('', [Validators.required,Validators.email ]),
+       pass: new FormControl('', [Validators.required]),
+    });
 
   }
 
-alert(message: string){
-this.alertCtrl.create({
-  title: 'Info!',
-  subTitle: message,
-  buttons: ['ok']
-  }
-).present();
-}
 
-  signInUser() {
-    console.log(this.user.value);
-    console.log(this.pass.value);
-this.api.login(this.user.value,this.pass.value);
-  }
+
+  // function to authenticate the user logined
+  signIn() {
+
+    const   url = 'https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php';
+      const data1 = new FormData();
+      console.log(this.user.value.name);
+      console.log(this.user.value.pass);
+      data1.append('username', this.user.value.name);
+      data1.append('password', this.user.value.pass);
+
+      this.http.post(url, data1)
+      .subscribe(data => {
+        this.response = data['_body'];
+
+        localStorage.setItem('authencation', this.response);
+        console.log(this.response);
+        this.navCtrl.setRoot(HomePage);
+
+      }, error => {
+          console.log('Oooops!');
+        });
+    }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+   }
 
 }

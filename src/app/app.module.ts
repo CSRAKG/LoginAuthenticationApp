@@ -9,6 +9,11 @@ import { MyApp } from './app.component';
  import {LoginPageModule} from "../pages/login/login.module";
     import { ApiUserProvider } from '../providers/api-user/api-user';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpModule } from '@angular/http';
+  import {MenuPageModule} from "../pages/menu/menu.module";
+import {EventLogPageModule} from "../pages/event-log/event-log.module";
+import {QrCodePageModule} from "../pages/qr-code/qr-code.module";
+
 
 
 @NgModule({
@@ -23,7 +28,12 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     IonicModule.forRoot(MyApp),
       HomePageModule,
      LoginPageModule,
-       HttpClientModule
+       HttpClientModule,
+    MenuPageModule,
+    EventLogPageModule,
+    QrCodePageModule,
+
+HttpModule
 
   ],
   bootstrap: [IonicApp],
@@ -37,7 +47,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
      ApiUserProvider,
-    HttpClient
+    HttpClient,
 
 
   ]
