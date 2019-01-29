@@ -13,8 +13,8 @@ import { HttpModule } from '@angular/http';
   import {MenuPageModule} from "../pages/menu/menu.module";
 import {EventLogPageModule} from "../pages/event-log/event-log.module";
 import {QrCodePageModule} from "../pages/qr-code/qr-code.module";
-
-
+import {NgxQRCodeModule} from "ngx-qrcode2";
+import {BarcodeScanner} from "@ionic-native/barcode-scanner/ngx";
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import {QrCodePageModule} from "../pages/qr-code/qr-code.module";
     MenuPageModule,
     EventLogPageModule,
     QrCodePageModule,
+    NgxQRCodeModule,
 
 HttpModule
 
@@ -47,7 +48,9 @@ HttpModule
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
      ApiUserProvider,
-    HttpClient,
+      HttpClient,
+     BarcodeScanner
+
 
 
   ]

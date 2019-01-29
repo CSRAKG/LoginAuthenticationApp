@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+ import {BarcodeScanner} from "@ionic-native/barcode-scanner/ngx";
+
 
 /**
  * Generated class for the QrCodePage page.
@@ -15,10 +16,21 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
   templateUrl: 'qr-code.html',
 })
 export class QrCodePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+qrData = null;
+createdcode = null;
+scannercode = null;
+  constructor(public navCtrl: NavController, private barcodeScanner: BarcodeScanner) {
   }
 
+  createCode(){
+this.createdcode = this.qrData;
+  }
+
+scanCode(){
+this.barcodeScanner.scan().then(barcodeData => {
+  this.scannercode= barcodeData.text;
+})
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrCodePage');
   }
