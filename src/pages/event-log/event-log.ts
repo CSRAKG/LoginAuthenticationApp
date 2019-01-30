@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
 })
 export class EventLogPage {
   response: string;
+  str: object;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
   }
   event() {
@@ -17,12 +18,12 @@ export class EventLogPage {
     data1.append("type", "fetchevents");
     this.http.post(url, data1)
       .subscribe(data => {
-        this.response = JSON.stringify(data);
+        this.response = data['_body'];
+        this.str = JSON.parse(this.response);
       }, error => {
         console.log();
       });
     // Print response data
-    console.log('hi', this.response);
   }
 
   ionViewDidLoad() {
