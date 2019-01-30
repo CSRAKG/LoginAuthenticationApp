@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 @IonicPage()
@@ -10,8 +10,15 @@ import { Http } from '@angular/http';
 export class EventLogPage {
   response: string;
   str: object;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http
+    , public modal: ModalController) {
   }
+
+  openModal(){
+    const myModal = this.modal.create('ModalPage');
+    myModal.present();
+  }
+
   event() {
     const url = 'https://dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
     const data1 = new FormData();
