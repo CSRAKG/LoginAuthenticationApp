@@ -11,21 +11,20 @@
   <button ion-button full (click)="createCode()">
     <ion-icon name="barcode"></ion-icon>
   </button>
-  <button ion-button full (click)="scanCode()">
+  <button ion-button full (click)="scan()">
     <ion-icon name="qr-scanner"></ion-icon>
   </button>
 
   <ion-card *ngIf="createdcode">
     <ngx-qrcode [qrc-value]="createdcode"></ngx-qrcode>
-    <ion-card-content>
-    </ion-card-content>
   </ion-card>
-  <ion-card *ngIf="scannercode">
-    <ion-card-content>
-      Result from Scan: {{scannercode }}
-    </ion-card-content>
 
-  </ion-card>
+
+  <!--code-->
+    <br/>
+    <ion-card *ngIf="scannedData.text">
+      <h4>Barcode code : {{scannedData.text}}</h4>
+    </ion-card>
+  <!--end-->
 
 </ion-content>
-

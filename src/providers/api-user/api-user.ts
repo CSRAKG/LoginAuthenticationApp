@@ -1,8 +1,6 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {LoginResponse} from "../../models/login-response";
-import {Observable} from "rxjs";
-import {map, tap} from "rxjs/operators";
  /*
   Generated class for the ApiUserProvider provider.
 
@@ -24,13 +22,6 @@ url ='https://dron.limited/digimess/appapi/BasicInfo/FetchLoginUser.php';
     data1.append('username', 'krs@gmail.com');
     data1.append('password', 'karan123');
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin':'*',
-
-        'Content-Type': 'application/json'
-      })
-    };
     const body = JSON.stringify(data1);
     const data = this.http.post(this.url, body);
     data.subscribe(d => {

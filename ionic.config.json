@@ -3,5 +3,11 @@
   "integrations": {
     "cordova": {}
   },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://dron.limited/digimess/appapi"
+    }
+  ],
   "type": "ionic-angular"
 }

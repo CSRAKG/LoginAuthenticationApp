@@ -13,6 +13,8 @@ import { MenuPageModule } from "../pages/menu/menu.module";
 import { EventLogPageModule } from "../pages/event-log/event-log.module";
 import { QrCodePageModule } from "../pages/qr-code/qr-code.module";
 import { NgxQRCodeModule } from "ngx-qrcode2";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,8 @@ import { NgxQRCodeModule } from "ngx-qrcode2";
     EventLogPageModule,
     QrCodePageModule,
     NgxQRCodeModule,
-
+    ZXingScannerModule,
     HttpModule
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,13 +42,10 @@ import { NgxQRCodeModule } from "ngx-qrcode2";
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiUserProvider,
     HttpClient,
-
-
-
-
   ]
 })
 export class AppModule { }

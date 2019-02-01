@@ -15,7 +15,21 @@
 
 
 <ion-content padding>
+  <form>
+    <ion-item>
+      <ion-label>Event-id : </ion-label>
+      <ion-input readonly [placeholder]="xyz.event_id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Event : </ion-label>
+      <ion-input placeholder="Event" [value]="[(xyz.event)]" required></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Start : </ion-label>
+        <ion-input placeholder="Start" [value]="[(xyz.start)]" required></ion-input>
+      </ion-item>
     <ion-buttons>
-        <button round small ion-button (click)="update()">Update</button>
-      </ion-buttons>
+      <button round small ion-button (click)="update()">Update</button>
+    </ion-buttons>
+  </form>
 </ion-content>

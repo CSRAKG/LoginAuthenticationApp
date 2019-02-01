@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 @IonicPage()
@@ -8,14 +8,29 @@ import { Http } from '@angular/http';
   templateUrl: 'event-log.html',
 })
 export class EventLogPage {
+  basepath = "/"
   response: string;
   str: object;
+  value: string = '';
+  array: string[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http
-    , public modal: ModalController) {
+    , public modal: ModalController,
+    private _platform: Platform) {
+    if (this._platform.is){
+      
+    }
   }
 
-  openModal(){
-    const myModal = this.modal.create('ModalPage');
+  openModal(event_id, event, start) {
+
+    const myData = {
+      event_id: event_id,
+      event: event,
+      start: start
+    };
+
+    const myModal = this.modal.create('ModalPage', { data: myData });
     myModal.present();
   }
 

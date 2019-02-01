@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
- import {MenuPage} from "../menu/menu";
-import {EventLogPage} from "../event-log/event-log";
-import {QrCodePage} from "../qr-code/qr-code";
+import { IonicPage, NavController } from 'ionic-angular';
+import { MenuPage } from "../menu/menu";
+import { EventLogPage } from "../event-log/event-log";
+import { QrCodePage } from "../qr-code/qr-code";
 
 /**
  * Generated class for the HomePage page.
@@ -18,7 +18,7 @@ import {QrCodePage} from "../qr-code/qr-code";
 })
 export class HomePage {
 
-   tab1Root = MenuPage;
+  tab1Root = MenuPage;
   tab2Root = EventLogPage;
   tab3Root = QrCodePage;
 
@@ -28,11 +28,11 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
   }
 
 
-   ionViewDidLoad() {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
 

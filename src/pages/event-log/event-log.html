@@ -21,10 +21,11 @@
         <b>Event Id :</b> {{item.event_id}}<br />
         <b>Event :</b> {{item.event}}<br />
         <b>Start :</b> {{item.start}}<br />
-        <button ion-button round small color="primary" (click)="openModal()">Edit</button><br />
+        <button ion-button round small color="primary" (click)="openModal(item.event_id,item.event,item.start)">Edit</button><br />
       </ion-card-content>
     </ion-item>
   </ion-list>
   <!--end-->
+
 
 </ion-content>
