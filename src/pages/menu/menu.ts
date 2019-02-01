@@ -15,7 +15,6 @@ import { Http } from '@angular/http';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-
   todo = {};
   response: string;
   str: object;
@@ -23,7 +22,7 @@ export class MenuPage {
   }
 
   messmenu() {
-    const url = 'https://dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
+    const url = 'https://www.dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
     const data1 = new FormData();
     data1.append('type', 'messmenu');
     this.http.post(url, data1)

@@ -35,7 +35,7 @@ export class EventLogPage {
   }
 
   event() {
-    const url = 'https://dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
+    const url = 'https://www.dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
     const data1 = new FormData();
     data1.append("type", "fetchevents");
     this.http.post(url, data1)

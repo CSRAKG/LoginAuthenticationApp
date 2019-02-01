@@ -27,7 +27,7 @@ export class ModalPage {
   }
 
   update() {
-    const url = 'https://dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
+    const url = 'https://www.dron.limited/digimess/appapi/BasicInfo/ManageEvents.php';
     const data1 = new FormData();
     data1.append('type', 'updateevent');
     data1.append('evid', this.xyz.event_id);

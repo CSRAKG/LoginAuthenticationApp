@@ -5,8 +5,8 @@
   },
   "proxies": [
     {
-      "path": "/api",
-      "proxyUrl": "https://dron.limited/digimess/appapi"
+      "path": "/",
+      "proxyUrl": "https://dron.limited/"
     }
   ],
   "type": "ionic-angular"
